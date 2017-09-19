@@ -18,6 +18,7 @@ jobs:
             sudo npm update
             sudo npm config set user 0
             sudo npm config set unsafe-perm true
+            chmod 755 /root && mkdir -m 755 -p /root/.npm/_logs
             sudo npm install -g hexo-cli
             sudo npm install -D netlify-cli
 
