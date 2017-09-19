@@ -15,10 +15,10 @@ jobs:
       - run:
           name: npm setup
           command: |
-            npm update
-            npm config set user 0
-            npm config set unsafe-perm true
-            npm install -g hexo-cli
+            sudo npm update
+            sudo npm config set user 0
+            sudo npm config set unsafe-perm true
+            sudo npm install -g hexo-cli
             sudo npm install -D netlify-cli
 
       - run: sudo npm install
