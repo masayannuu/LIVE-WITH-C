@@ -1,0 +1,47 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+rss: /atom.xml
+
+# Content
+excerpt_link: 続きを読む
+fancybox: true
+
+# Sidebar
+sidebar: right
+
+# Search form
+search: true
+
+# Widgets
+widgets:
+- about
+- category
+- tag
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+avatar: https://s.gravatar.com/avatar/774ff2736076a50e90389422f9d6efdd?s=80
+google_plus:
+fb_admins:
+fb_app_id:
+
+social:
+  twitter: //twitter.com/masayannu
+  facebook: //www.facebook.com/masaya.morimoto.18
+  github: //github.com/masayannuu
+  # qiita: //qiita.com/masayannuu  # qiitaの記事全然投稿してなかったので、被リンク。投稿したらリンクする
+
+aboutme: 新卒2年目から文系SE始めました。Ruby/Js。これからNodeとPython勉強するマン。
+
+about:
+  author: true
+  avatar: true
+  twitter: false
+  aboutme: true
+  description: true
+  social: true
+
+common_keywords:
