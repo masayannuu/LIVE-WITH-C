@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle:
+title: 好奇心の中に暮らす
+subtitle: WEBの世界で小躍りしてる人のブログ
 description:
-author: John Doe
-language:
-timezone:
+author: まさやん
+language: ja
+timezone: Asia/Tokyo
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -16,6 +16,7 @@ url: http://yoursite.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+google_analytics: UA-106632955-1              #(※省略可) google アナリティクスのトラッキングID
 
 # Directory
 source_dir: source
@@ -27,6 +28,11 @@ code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
 
+# category
+# 記事が増えて整理が必要になるまではタグ運用でやってみる
+# category_map:
+
+
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -34,7 +40,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -72,7 +78,103 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: apollo
+theme: ingenuous-simple
+
+# hexo-generator-ampの設定
+# @see: https://photo-tea.com/p/published-hexo-generator-amp/
+generator_amp:
+#  substituteGoogle_adsense:                     #(※省略可) google adsenseに関するオプション
+#    data_ad_client: ca-pub-123456789876543      #(※省略可)
+#    data_ad_slot: 0123456789                    #(※省略可)
+#    width: 336                                  #(※省略可)
+#    height: 280                                 #(※省略可)
+
+  templateDir: amp-template                     #AMP HTMLを生成に利用するテンプレートが格納されるディレクトリ(hexoプロジェクトからの相対パス)
+  assetDistDir: amp-dist                        #AMP HTMLが使用する各アセットのディレクトリ (公開ディレクトリpublicからの相対パス)
+
+  logo:                                         #ロゴに関するオプション
+    path: sample/sample-logo.png                       #schema.orgに含めるロゴ画像のパス (assetDistDirオプションに指定したディレクトリからの相対パス)
+    width: 600                                  #schema.orgに含めるロゴ画像の幅  (AMPカルーセルで定めるschema.orgの仕様により600px以下が必須)
+    height: 60                                  #schema.orgに含めるロゴ画像の高さ (AMPカルーセルで定めるschema.orgの仕様により60px以下が必須)
+  logo_topImage:                                #(省略可)サイトのロゴに関するオプション
+    path: sample/sample-yoursite-logo.png       #(※省略可) サイトのロゴ画像のパス (assetDistDirオプションに指定したディレクトリからの相対パス)
+    width: 1024                                 #(※省略可) サイトのロゴ画像の幅
+    height: 400                                 #(※省略可) サイトのロゴ画像の高さ
+
+  substituteTitleImage:                         #代替画像に関するオプション。記事に画像が無い場合、ここで指定した画像が代わりに使用される
+    path: sample/sample-substituteTitleImage.png       #代替アイキャッチ画像のパス (assetDistDirオプションに指定したディレクトリからの相対パス)
+    width: 1024                                 #代替画像の幅 (AMPカルーセルが定めるschema.orgの仕様により696px以上が必須)
+    height: 800                                 #代替画像の高さ
+
+  theme:                                        #(optional) Sample AMP template's option
+    #facebook_app_id:            #(optional) api_id is necessary with the facebook's social button.
+    menu:                                       #(optional) Sample AMP template's menu option
+      diary:                #(optional) example menu
+      archives: /archives                       #(optional) example menu
+    authorLink:
+      twitter_id: masayannu
+      facebook_id: masaya.morimoto.18
+      instagram_id: masayannuu
+      github_id: masayannuu
+
+  google_analytics: UA-106632955-1              #(※省略可) google アナリティクスのトラッキングID
+  cssFilePath: sample/sample-amp.css                   #(※省略可) AMP HTMLに埋め込むcssファイルのファイルパス (templateDirオプションに指定したディレクトリからの相対パス。サイズはAMPの仕様により、50000Byte以下が必須)
+  templateFilePath: sample/sample-amp.ejs              #(※省略可) AMPのテンプレートとして使うejsファイル (templateDirオプションに指定したディレクトリからの相対パス)
+  generateAmpPath: :year/:month/:day/:title/amp/ #(※省略可) AMP HTMLを生成する場所を変更したい時に指定します。記述方法はPermalinksと同じです。
+  html_minifier:                                #(※省略可) HTMLの圧縮を有効にする。圧縮オプションはgithubのkangax/html-minifierを参照
+  warningLog: true                              #(※省略可) コンソールでAMP HTML検証結果や警告を表示するか否か？
+  validateAMP: true                             #(※省略可) AMP HTMLの記述の妥当性を自動検証するか否か？
+  cache: hexo-generator-amp-cached.json         #(※省略可) AMP HTML生成の高速化。キャッシュを使用するか否か？指定すると、編集したmarkdownの記事のみAML HTMLを再生成する。それ以外の古い記事はここで指定したキャッシュデータから読み出す。
+
+# authorに関する拡張情報(任意)
+authorDetail:                                   #(※省略可)
+  authorReading: まさやん                         #(※省略可) 著者の読み仮名など
+  avatar:                                       #(※省略可)
+    path: sample/sample-avator.png                     #(※省略可) 筆者アイコンのファイルパス (assetDistDirオプションに指定したディレクトリからの相対パス)
+    width: 1024                                 #(※省略可) 筆者アイコンの幅
+    height: 1024                                #(※省略可) 筆者アイコンの高さ
+  description: 新卒2年目から文系SE。Ruby/Js。これからNodeとPython勉強するマン。                          #(※省略可) 著者の説明
+copyright_message: 記事の無断転載を禁止します。         #(※省略可) コンテンツに関する注意書き等々
+
+# jsを圧縮する
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - "*.min.js"
+
+# cssを圧縮する
+clean_css:
+  exclude:
+    - "*.min.css"
+
+# 目次の自動生成
+toc:
+  maxdepth: 3
+  class: toc
+  slugify: transliteration
+  anchor:
+    position: after
+    symbol: '#'
+    style: header-anchor #アンカーのCSSクラス、(Default is header-anchor);
+
+# markdownの部分テンプレート設定
+include_markdown:
+  dir: source/_template   # Base directory of template markdown
+  verbose : true          # If you want to check the path of markdown that use <!-- md --> tag , please set the true.
+
+sitemap:
+  path: sitemap.xml
+  tag: false
+  category: false
+
+robotstxt:
+  useragent: "*"
+  disallow:
+    - /images/
+  allow:
+  sitemap: /sitemap.xml #https://techblog.pepese.net/sitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
