@@ -1,0 +1,45 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.4
+
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+      # Restore npm cache
+      - type: cache-restore
+        key: npm-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: npm setup
+          command: |
+            npm update
+            npm config set user 0
+            npm config set unsafe-perm true
+            npm install -g hexo-cli
+            npm install -D netlify-cli
+
+      - run: npm install
+
+       # Store npm cache
+      - type: cache-save
+        key: npm-{{ checksum "package-lock.json" }}
+        paths:
+          - ~/repo
+
+#      - run: npm run test
+#      - deploy:
+#          name: Maybe Deploy
+#          command: |
+#            if [ "${CIRCLE_BRANCH}" == "development" ]; then
+#              echo "Deploy Development"
+#              yarn run build
+#              ./node_modules/netlify-cli/bin/cli.js deploy \
+#                --site-id ${DEV_SITE_ID} \
+#                -p build/ \
+#                --access-token ${NETLIFY_TOKEN}
+#            else
+#              echo "Not master branch so not deploying"
+#            fi
