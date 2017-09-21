@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
 
-      # Restore npm cache
       - type: cache-restore
         key: npm-{{ checksum "package-lock.json" }}
 
@@ -18,27 +17,26 @@ jobs:
             npm config set user 0
             npm config set unsafe-perm true
             npm install -g hexo-cli
-            npm install -D netlify-cli
+            npm install -g netlify-cli
 
       - run: npm install
 
-       # Store npm cache
       - type: cache-save
         key: npm-{{ checksum "package-lock.json" }}
         paths:
           - ~/repo
 
-#      - run: npm run test
-      - deploy:
-          name: Maybe Deploy
+      - run:
+          name: build public files
           command: |
-            if [ "${CIRCLE_BRANCH}" == "development" ]; then
-              echo "Deploy Development"
-              yarn run build
-              ./node_modules/netlify-cli/bin/cli.js deploy \
-                --site-id ${DEV_SITE_ID} \
-                -p build/ \
-                --access-token ${NETLIFY_TOKEN}
+            hexo g
+
+      - deploy:
+          name: Hosting Netlify
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo \{\"site_id\":\"${MASTER_SITE_ID}\",\"path\":\"public\"\} >> .netlify
+              /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy -t ${NETLIFY_TOKEN}
             else
               echo "Not master branch so not deploying"
             fi
