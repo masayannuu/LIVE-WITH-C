@@ -38,10 +38,9 @@ jobs:
           name: Hosting Netlify
           command: |
             if [ "${CIRCLE_BRANCH}" == "feature/netlify" ]; then
+              echo \{\"site_id\":\"${MASTER_SITE_ID}\",\"path\":\"public\"\} >> .netlify
               ./node_modules/netlify-cli/bin/cli.js deploy \
-              -p public/
-              --site-id ${MASTER_SITE_ID} \
-              --access-token ${NETLIFY_TOKEN}
+              -t ${NETLIFY_TOKEN}
             else
               echo "Not master branch so not deploying"
             fi
