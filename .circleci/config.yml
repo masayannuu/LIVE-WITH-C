@@ -31,8 +31,8 @@ jobs:
       - run:
           name: build public file
           command: |
-            hexo build
-            echo 'build public'
+            ls -la
+            hexo g
             ls public/
 
       - deploy:
