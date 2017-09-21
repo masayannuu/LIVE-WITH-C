@@ -20,7 +20,7 @@ jobs:
             npm install -g hexo-cli
             npm install -D netlify-cli
 
-      - run: sudo npm install
+      - run: npm install
 
        # Store npm cache
       - type: cache-save
