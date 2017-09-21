@@ -18,7 +18,7 @@ jobs:
             npm config set user 0
             npm config set unsafe-perm true
             npm install -g hexo-cli
-            npm install -g netlify-cli
+            npm install -D netlify-cli
 
       - run: npm install
 
@@ -31,7 +31,6 @@ jobs:
       - run:
           name: build public file
           command: |
-            ls -la
             hexo g
             ls public/
 
@@ -39,7 +38,7 @@ jobs:
           name: Hosting Netlify
           command: |
             if [ "${CIRCLE_BRANCH}" == "feature/netlify" ]; then
-              /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy \
+              ./node_modules/netlify-cli/bin/cli.js deploy \
               -p public/
               --site-id ${MASTER_SITE_ID} \
               --access-token ${NETLIFY_TOKEN}
