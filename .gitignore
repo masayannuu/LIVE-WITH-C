@@ -3,4 +3,7 @@ Thumbs.db
 *.log
 node_modules/
 public/
-.deploy*/
+.deploy*
+db.json
+hexo-generator-amp-cached.json
+.netlify
