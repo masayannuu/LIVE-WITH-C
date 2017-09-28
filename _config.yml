@@ -180,3 +180,6 @@ robotstxt:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+livereload:
+  port: 35729

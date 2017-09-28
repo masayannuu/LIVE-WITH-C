@@ -1,8 +1,6 @@
 # Header
 menu:
-  Home: /
-  Archives: /archives
-rss: /atom.xml
+#  archive: /archives
 
 # Content
 excerpt_link: 続きを読む
