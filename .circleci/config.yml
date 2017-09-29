@@ -8,7 +8,6 @@ jobs:
     steps:
       - checkout
 
-      # Restore npm cache
       - type: cache-restore
         key: npm-{{ checksum "package-lock.json" }}
 
@@ -22,27 +21,22 @@ jobs:
 
       - run: npm install
 
-       # Store npm cache
       - type: cache-save
         key: npm-{{ checksum "package-lock.json" }}
         paths:
           - ~/repo
 
       - run:
-          name: build public file
+          name: build public files
           command: |
-            hexo build
-            echo 'build public'
-            ls public/
+            hexo g
 
       - deploy:
           name: Hosting Netlify
           command: |
-            if [ "${CIRCLE_BRANCH}" == "feature/netlify" ]; then
-              /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy \
-              -p public/
-              --site-id ${MASTER_SITE_ID} \
-              --access-token ${NETLIFY_TOKEN}
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo \{\"site_id\":\"${MASTER_SITE_ID}\",\"path\":\"public\"\} >> .netlify
+              /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy -t ${NETLIFY_TOKEN}
             else
               echo "Not master branch so not deploying"
             fi
