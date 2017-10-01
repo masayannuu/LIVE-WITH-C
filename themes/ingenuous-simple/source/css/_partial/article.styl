@@ -9,19 +9,38 @@
 
 .article-meta
   clearfix()
+  padding: 10px 0 0 15px
+
+.post-info
+  clearfix()
+  padding: 10px 0 0 15px
+
+.icon
+  font-family: font-icon
+  display: inline-block;
+  text-align: center;
+  font-size: 1.5rem
+  margin-left: 0.5rem
 
 .article-date
-  @extend $block-caption
+  text-decoration: none
+  color: color-grey
+  margin-left: 5px
+  line-height: 1em
+  font-size: 10px
   float: left
 
+#calender-icon-link
+  &:before
+    content: "\f133"
+    margin-right: 0.5rem
+ 
 .article-category
   float: left
   line-height: 1em
   color: #ccc
   text-shadow: 0 1px #fff
   margin-left: 8px
-  &:before
-    content: "\2022"
 
 .article-category-link
   @extend $block-caption
@@ -162,6 +181,7 @@
 .article-tag-list-link
   &:before
     content: "#"
+    text-decoration: none
 
 .article-comment-link
   float: right
