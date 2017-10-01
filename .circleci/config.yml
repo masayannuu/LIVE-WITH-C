@@ -29,8 +29,8 @@ jobs:
       - run:
           name: build public files
           command: |
-            haxo clean
-            hexo g
+            hexo clean
+            hexo generate
 
       - deploy:
           name: Hosting Netlify
