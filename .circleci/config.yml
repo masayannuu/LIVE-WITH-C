@@ -29,13 +29,14 @@ jobs:
       - run:
           name: build public files
           command: |
-            hexo clean
             hexo generate
 
       - deploy:
           name: Hosting Netlify
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ls public
+              cat public/index.html
               echo \{\"site_id\":\"${MASTER_SITE_ID}\",\"path\":\"public\"\} >> .netlify
               /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy -t ${NETLIFY_TOKEN}
             else
