@@ -1,19 +1,18 @@
 <% if (theme.about) { %>
   <div class="widget-wrap">
-    <h3 id="widget-title-about" class="widget-title">Author</h3>
-    <div class="widget">
+    <div class="widget author-block">
       <% if (theme.about.avatar) { %>
         <img class="profile-avatar" src= <%- url_for(theme.avatar) %> >
       <% } %>
       <% if (theme.about.author) { %>
-        <p> <%- config.author %> </p>
+        <p class="author-name"> <%- config.author %> </p>
       <% } %>
       <% if(theme.about.social) { %>
           <%- partial('social') %>
       <% } %>
       </p>
       <% if (theme.about.aboutme) { %>
-        <p> <%- theme.aboutme %> </p>
+        <p class="profile-text"> <%- theme.aboutme %> </p>
       <% } %>
       <% if (theme.about.description) { %>
         <p> <%- config.description %> </p>
