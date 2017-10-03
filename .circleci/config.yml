@@ -14,8 +14,7 @@ jobs:
           name: Checkout Git repo
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
-            git reset --hard $CIRCLE_SHA1 || (echo "ビルド実行後にブランチが更新されました。Rebuildしてください。" 1>&2; false)
+            git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
             git log -n 5
 
       - type: cache-restore
