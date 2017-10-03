@@ -1,7 +1,6 @@
 ---
 title: 記事を投稿してみました
 tags:
-  - "テスト"
   - "hoge"
   - "ruby"
 author: masayannuu

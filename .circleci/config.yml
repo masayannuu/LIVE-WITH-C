@@ -29,9 +29,7 @@ jobs:
       - run:
           name: build public files
           command: |
-            git log
             hexo generate
-            ls public
             cat public/index.html
 
       - deploy:
