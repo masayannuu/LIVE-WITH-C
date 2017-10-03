@@ -6,16 +6,7 @@ jobs:
 
     working_directory: ~/repo
     steps:
-      - run:
-          name: Check Github connection
-          command: echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
-
-      - run:
-          name: Checkout Git repo
-          command: |
-            repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            echo $repository_https_url
-            git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
+      - checkout
 
       - run:
           name: Setup build tools
