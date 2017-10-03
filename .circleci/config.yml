@@ -14,7 +14,9 @@ jobs:
           name: Checkout Git repo
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
+            echo repository_https_url
             git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
+            echo $CIRCLE_BRANCH
             git log -n 1
 
       - type: cache-restore
@@ -39,6 +41,7 @@ jobs:
           name: Build public files
           command: |
             hexo generate
+            cat public/index.html
 
       - deploy:
           name: Hosting Netlify
