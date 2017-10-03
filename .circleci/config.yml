@@ -14,10 +14,8 @@ jobs:
           name: Checkout Git repo
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
-            echo repository_https_url
+            echo $repository_https_url
             git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
-            echo $CIRCLE_BRANCH
-            git log -n 1
 
       - type: cache-restore
         key: npm-{{ checksum "package-lock.json" }}
@@ -40,15 +38,15 @@ jobs:
       - run:
           name: Build public files
           command: |
+            git log -n 2
+            cat source/_posts/test-writing.md
             hexo generate
-            cat public/index.html
 
       - deploy:
           name: Hosting Netlify
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo \{\"site_id\":\"${MASTER_SITE_ID}\",\"path\":\"public\"\} >> .netlify
-              /usr/local/lib/node_modules/netlify-cli/bin/cli.js deploy -t ${NETLIFY_TOKEN}
             else
               echo "Not master branch so not deploying"
             fi
