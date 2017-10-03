@@ -7,10 +7,11 @@ jobs:
     working_directory: ~/repo
     steps:
       - run:
-          name: GitHubへのHTTPS接続の認証設定
+          name: Check Github connection
           command: echo "machine github.com login $GITHUB_TOKEN" > ~/.netrc
+
       - run:
-          name: GitリポジトリのCheckout
+          name: Checkout Git repo
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
             git clone --depth=1 --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
