@@ -17,9 +17,6 @@ jobs:
             echo $repository_https_url
             git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
 
-      - type: cache-restore
-        key: npm-{{ checksum "package-lock.json" }}
-
       - run:
           name: Setup build tools
           command: |
@@ -29,11 +26,6 @@ jobs:
             npm install -g netlify-cli
 
       - run: npm install
-
-      - type: cache-save
-        key: npm-{{ checksum "package-lock.json" }}
-        paths:
-          - ~/repo
 
       - run:
           name: Build public files
