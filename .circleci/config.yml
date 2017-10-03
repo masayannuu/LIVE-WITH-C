@@ -15,13 +15,13 @@ jobs:
           command: |
             repository_https_url=$(echo $CIRCLE_REPOSITORY_URL | sed -e "s|git@github.com:|https://github.com/|")
             git clone --branch $CIRCLE_BRANCH --single-branch $repository_https_url .
-            git log -n 5
+            git log -n 1
 
       - type: cache-restore
         key: npm-{{ checksum "package-lock.json" }}
 
       - run:
-          name: npm setup
+          name: Setup build tools
           command: |
             npm config set user 0
             npm config set unsafe-perm true
@@ -36,10 +36,9 @@ jobs:
           - ~/repo
 
       - run:
-          name: build public files
+          name: Build public files
           command: |
             hexo generate
-            cat public/index.html
 
       - deploy:
           name: Hosting Netlify
