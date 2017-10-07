@@ -21,7 +21,7 @@ widgets:
 
 # Miscellaneous
 google_analytics:
-favicon: /favicon.png
+favicon: /favicon.ico
 avatar: https://s.gravatar.com/avatar/774ff2736076a50e90389422f9d6efdd?s=120
 google_plus:
 fb_admins:
