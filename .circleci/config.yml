@@ -37,6 +37,12 @@ jobs:
           command: |
             hexo generate
 
+      - run:
+          name: Build algolia indexs
+          command: |
+            export HEXO_ALGOLIA_INDEXING_KEY = ${HEXO_ALGOLIA_INDEXING_KEY}
+            hexo algolia
+
       - deploy:
           name: Hosting Netlify
           command: |
