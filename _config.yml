@@ -180,3 +180,9 @@ robotstxt:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:
+
+# search post by algolia
+algolia:
+  applicationID: VJ8K3G9HJO
+  apiKey: bda48497ab555fcf314e75cbbb6bdb0f # search-only
+  indexName: live-with-c
