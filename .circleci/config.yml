@@ -41,7 +41,7 @@ jobs:
           name: Build algolia indexs
           command: |
             export HEXO_ALGOLIA_INDEXING_KEY=${HEXO_ALGOLIA_INDEXING_KEY}
-            hexo algolia
+            echo 'now skip!'
 
       - deploy:
           name: Hosting Netlify
