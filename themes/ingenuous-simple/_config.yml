@@ -8,7 +8,7 @@ excerpt_link: 続きを読む
 fancybox: true
 
 # Sidebar
-sidebar: right
+sidebar: left
 
 # Search form
 search: true
