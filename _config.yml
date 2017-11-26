@@ -183,6 +183,6 @@ deploy:
 
 # search post by algolia
 algolia:
-  applicationID: VJ8K3G9HJO
-  apiKey: bda48497ab555fcf314e75cbbb6bdb0f # search-only
+  applicationID: ABM2450F53
+  apiKey: 8c2a008ba56a2623bbcb97896e05ebfa # search-only
   indexName: live-with-c
