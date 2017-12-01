@@ -133,7 +133,7 @@ authorDetail:                                   #(※省略可)
     path: sample/sample-avator.png                     #(※省略可) 筆者アイコンのファイルパス (assetDistDirオプションに指定したディレクトリからの相対パス)
     width: 1024                                 #(※省略可) 筆者アイコンの幅
     height: 1024                                #(※省略可) 筆者アイコンの高さ
-  description: 新卒2年目から文系SE。Ruby/Js。これからNodeとPython勉強するマン。                          #(※省略可) 著者の説明
+  description: 新卒2年目から文系SE. Ruby/Js. 
 copyright_message: 記事の無断転載を禁止します。         #(※省略可) コンテンツに関する注意書き等々
 
 # jsを圧縮する
